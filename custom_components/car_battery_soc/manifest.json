@@ -1,0 +1,10 @@
+{
+  "domain": "car_battery_soc",
+  "name": "Car Battery SoC",
+  "documentation": "https://github.com/twoj_login/car_battery_soc",
+  "dependencies": [],
+  "codeowners": ["@user"],
+  "config_flow": true,
+  "iot_class": "local_polling",
+  "version": "1.0.0"
+}

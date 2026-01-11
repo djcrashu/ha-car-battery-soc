@@ -1,0 +1,7 @@
+{
+  "name": "Car Battery SoC",
+  "content_type": "integration",
+  "domains": ["car_battery_soc"],
+  "homeassistant": "2026.1.0",
+  "iot_class": "local_polling"
+}
