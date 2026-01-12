@@ -2,7 +2,9 @@ import logging
 from datetime import datetime, timedelta
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.helpers.event import async_track_state_change_event, async_track_time_interval
+#from homeassistant.helpers.event import async_track_state_change_event, async_track_time_interval
+from homeassistant.helpers.event import async_track_state_change_event, async_track_time_change
+
 from homeassistant.helpers.storage import Store
 
 from .const import DOMAIN, CONF_BT_ENTITY, CONF_MAC_ADDR, CONF_NAME
@@ -75,7 +77,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         await save_and_update()
 
     async_track_state_change_event(hass, [bt_entity], check_bt_state)
-    async_track_time_interval(hass, daily_penalty, timedelta(days=1))
+    #async_track_time_interval(hass, daily_penalty, timedelta(days=1))
+    async_track_time_change(hass, daily_penalty, hour=0, minute=0, second=0)
 
     # Ładujemy sensory i przyciski
     await hass.config_entries.async_forward_entry_setups(entry, ["sensor", "button"])
