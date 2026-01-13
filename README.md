@@ -4,6 +4,9 @@
 
 Integracja służy do **monitorowania stanu naładowania akumulatora samochodowego** na podstawie:
 
+![Screen](screenshot.jpg)
+
+
 * liczby rozruchów silnika,
 * czasu jazdy.
 
