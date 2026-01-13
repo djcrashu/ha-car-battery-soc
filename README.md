@@ -112,8 +112,9 @@ Punkty są **dodawane lub odejmowane** w zależności od sposobu użytkowania au
 
 * Integracja ma charakter **orientacyjny** – nie zastępuje pomiarów napięcia.
 * Najlepiej sprawdza się przy **regularnym użytkowaniu** auta.
+* Estymowane dla akumulatora AGM 70Ah i silnika 1.4 z systemem start-stop.
+
+
 
 
 ![Screen](screenshot.jpg)
-* Estymowane dla akumulatora AGM 70Ah i silnika 1.4 z systemem start-stop.
-
