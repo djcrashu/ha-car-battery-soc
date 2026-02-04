@@ -1,4 +1,4 @@
-from homeassistant.components.sensor import SensorEntity
+from homeassistant.components.sensor import SensorEntity, SensorStateClass, SensorDeviceClass
 from homeassistant.util import slugify
 from datetime import datetime
 from .const import DOMAIN, CONF_NAME
@@ -25,8 +25,23 @@ class SocSensor(SensorEntity):
         self._icon = icon
         
         self._attr_name = f"{car_name} SOC {label}"
-        self._attr_unique_id = f"{entry_id}_{s_id}"
+#        self._attr_unique_id = f"{entry_id}_{s_id}"
+        self._attr_unique_id = f"{slugify(car_name)}_{s_id}"
         self.entity_id = f"sensor.{slugify(car_name)}_{s_id}"
+
+        # KONFIGURACJA STATYSTYK DŁUGOTERMINOWYCH
+        if s_id == "soc_battery_health":
+            # Pozwala śledzić trend naładowania na przestrzeni miesięcy
+            self._attr_state_class = SensorStateClass.MEASUREMENT
+            
+        elif s_id == "soc_work_time":
+            # Informuje HA, że wartość rośnie w ciągu dnia i resetuje się o północy
+            self._attr_state_class = SensorStateClass.TOTAL_INCREASING
+            self._attr_device_class = SensorDeviceClass.DURATION
+            
+        elif s_id == "soc_daily_points" or s_id == "soc_starts":
+            # Pozwala na statystyki typu min/max/średnia dla punktów i liczby odpaleń
+            self._attr_state_class = SensorStateClass.MEASUREMENT
 
     @property
     def native_value(self):
